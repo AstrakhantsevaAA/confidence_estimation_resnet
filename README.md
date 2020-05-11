@@ -3,7 +3,12 @@
  
  На графике можно увидеть, что без confidence branch уверенность сети для обоих датасетов находится в области от 0.4 до 0.6 с выборочным средним 0.5 и 0.48 и модой 0.44, 0.45, это говорит о том, что сеть не уверена к какому распределению отнести данные.
  
+ https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/plots/resnet_0.0.pth_confidence_hist_confidence.png
+ 
+ 
  На графике с confidence branch видно, что сеть хорошо научилась определять данные из in-distribution и не плохо определяет данные из out-of-distribution, их выборочные средние равны 0.7 и 0.4, а моды 0.99 и 0.13, соответственно. 
+ 
+ https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/plots/resnet_0.3.pth_confidence_hist_confidence.png
  
  Также, для сравнения, посмотрим на метрики. По всем метрикам сеть с confidence branch превосходит сеть без нее.
  
