@@ -27,6 +27,20 @@
 | AUPR_IN (higher is better)        | 0.5002453961255687     | 0.8318190388701076|
 | AUPR_OUT (higher is better)       | 0.486528327815796     | 0.7696301616704235|
 
-Тем не менее, такие показатели не являются высокими, мы все еще можем наблюдать неуверенность сети на некоторых данных из in-distribution и ошибочно высокие confidence для данных из out-of-distribution. Второе обуславливается тем, что некоторые классы в датасетах пересекаются.
+Тем не менее, такие показатели не являются высокими, мы все еще можем наблюдать неуверенность сети на некоторых данных из in-distribution и высокие confidence для данных из out-of-distribution. Второе обуславливается тем, что некоторые классы в датасетах пересекаются.
  
 Для лучших результатов при обучении сети следует добавить дополнительную аугментацию изображений и взять больше слоев в нейронной сети. 
+
+Возьмём случайные картинки из интернета и проверим качество работы нашей сети. Результаты не плохие, первые четыре картинки были взяты не из in-distribution, последняя картинка была взята специально максимально похожей на картинки из in-distribution, сеть с высокой уверенностью узнала картинку и отнесла ее в in-distribution. 
+
+<img width="300" alt="pic1" src="https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/internet_pics_result/result_pic1.png">
+
+<img width="300" alt="pic2" src="https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/internet_pics_result/result_pic2.png">
+
+<img width="300" alt="pic3" src="https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/internet_pics_result/result_pic3.png">
+
+<img width="300" alt="pic4" src="https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/internet_pics_result/result_pic4.png">
+
+<img width="300" alt="pic5" src="https://github.com/AstrakhantsevaAA/confidence_estimation_resnet/blob/master/internet_pics_result/result_pic5.png">
+
+Для остальных картинок она тоже дала верные confidence, разве что в 4-й картинке со Стичем она завысила confidence до 0.66, возможно приняла его за собаку. Но с threshold = 0.85 картинка верно отправляется в out-of-distribution.
